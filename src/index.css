@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAF9F6;
+    color: #18181B;
+  }
+
+  h1, h2, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Book spread paper shadow & print fidelity */
+.book-page-shadow {
+  box-shadow:
+    0 1px 2px rgba(24, 24, 27, 0.05),
+    0 12px 32px -8px rgba(24, 24, 27, 0.08);
+}
+
+.book-gutter-left {
+  background: linear-gradient(to left, rgba(24, 24, 27, 0.06) 0%, rgba(24, 24, 27, 0.015) 6%, transparent 16%);
+}
+
+.book-gutter-right {
+  background: linear-gradient(to right, rgba(24, 24, 27, 0.06) 0%, rgba(24, 24, 27, 0.015) 6%, transparent 16%);
+}
+
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  float: left;
+  font-size: 3.25rem;
+  line-height: 0.85;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  font-weight: 600;
+  color: #1B4332;
+}
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only-spread {
+    box-shadow: none !important;
+    border: none !important;
+    page-break-after: always;
+  }
+}

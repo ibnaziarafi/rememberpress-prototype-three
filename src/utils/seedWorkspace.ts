@@ -1,0 +1,350 @@
+import type { BookWorkspaceData } from '../types';
+
+export const DEFAULT_FOUNDER_GUIDE =
+  'Founder’s Method (Who · What · Why · Sensory Details): Always anchor the memory in one real place and one ordinary day rather than summarizing an entire decade. Ask who was in the room, what small sounds or smells stood out, what went unexpectedly, and why that moment still matters to the people reading this book.';
+
+export function getFallbackSeedWorkspace(): BookWorkspaceData {
+  const now = new Date().toISOString();
+  return {
+    settings: {
+      id: 'book-cedar-cove',
+      inviteCode: 'CEDAR-1974',
+      bookMode: 'gift',
+      title: 'The Years Between',
+      subtitle: 'Stories of Cedar Cove, Family Tables & Second Acts',
+      authorName: 'Clara Vance',
+      organizerName: 'Maya Vance',
+      dedication:
+        'For Leo, Maya, and every grandchild who asks what the lake looked like before the highway arrived.',
+      coverTheme: 'linen-forest',
+      coverImageUrl: '/src/assets/images/sample_book_cover_1794804939349.jpg',
+      trimSize: '6x9',
+      interiorColorMode: 'color',
+      fontScale: 'classic',
+      includeQrAudioArchive: true,
+      includeDropCaps: true,
+      editionYear: '2026',
+      authorPreviewEnabled: true,
+      promptCadence: 'weekly',
+      preferredAiProvider: 'gemini-lite',
+      enableProviderFallback: true,
+      founderGuidePrompt: DEFAULT_FOUNDER_GUIDE,
+      spellingGlossary: [
+        { id: 'gloss-01', category: 'name', wrong: 'Klara', correct: 'Clara Vance' },
+        { id: 'gloss-02', category: 'place', wrong: 'Cedar Grove', correct: 'Cedar Cove' },
+        { id: 'gloss-03', category: 'address', wrong: 'Helm Street', correct: 'Elm Street, Portland' },
+      ],
+    },
+    collaborators: [
+      {
+        id: 'collab-01',
+        name: 'Clara Vance',
+        role: 'author',
+        relationship: 'Storyteller',
+        joinedAt: now,
+      },
+      {
+        id: 'collab-02',
+        name: 'Maya Vance',
+        role: 'organizer',
+        relationship: 'Daughter & Organizer',
+        joinedAt: now,
+      },
+      {
+        id: 'collab-03',
+        name: 'Leo Vance',
+        role: 'collaborator',
+        relationship: 'Brother',
+        joinedAt: now,
+      },
+    ],
+    chapters: [
+      {
+        id: 'chap-01',
+        order: 1,
+        title: 'Cedar Dock at Seven O’Clock',
+        subtitle: 'Summers on the northern shore, 1972–1976',
+        promptQuestion:
+          'What is a childhood place whose smells, light, or sounds you can still recall immediately?',
+        epigraph:
+          'We measured August not by the calendar, but by how warm the weathered planks stayed after sunset.',
+        pullQuote:
+          'My brother Leo always claimed he could hear the ferry whistle twenty minutes before anyone else on the point.',
+        body: `Before the highway widened past Heron Creek, getting to my grandfather’s cabin meant an hour on gravel roads with the windows rolled halfway down. Even now, if I catch the scent of sun-warmed cedar and pine resin at the end of a long day, I am eight years old again, sitting barefoot at the end of the dock with my brother Leo.
+
+Our grandfather built that dock in the spring of 1959 out of salvaged barn timbers. By the time we were old enough to dangle our heels in the shallows, the wood had bleached to a silver-gray that held the afternoon heat long after the sun dropped behind the spruce line. Leo was eleven—old enough to be trusted with the brass tackle box, though rarely patient enough to wait for a bite.
+
+At seven o’clock each evening, the lake turned completely still, like dark tea cooling in a saucer. My grandmother would ring a cast-iron bell from the porch, twice for supper, once if she only wanted help shelling peas. We always waited until the second ring faded across the water before standing up, reluctant to trade the golden hour for indoor lamplight.`,
+        transcript:
+          'Well, if I close my eyes and think back to being eight years old, it’s always the dock at Cedar Cove. We drove up on gravel roads with the windows down. My grandfather built that dock in 1959 from barn timbers, bleached silver-gray. Leo was eleven, always holding the brass tackle box. At seven o’clock the lake went completely flat, and Grandma rang the cast-iron bell from the porch—twice for supper, once for shelling peas.',
+        audioUrl: null,
+        audioDurationSeconds: 164,
+        writingTone: 'Warm Memoir',
+        aiEditLevel: 'balanced',
+        toneStrength: 'slight',
+        providerUsed: 'gemini',
+        isPrivate: false,
+        editingStatus: 'none',
+        editingNote: '',
+        eraLabel: '1972–1976 · Childhood',
+        followUpQuestions: [
+          'What was usually on the supper table when your grandmother rang the bell twice?',
+          'Did you and Leo ever take the rowboat out past the point without telling anyone?',
+        ],
+        updatedAt: now,
+      },
+      {
+        id: 'chap-02',
+        order: 2,
+        title: 'Flour on the Apron, Yeast in the Morning',
+        subtitle: 'Saturday loaves in my grandmother’s kitchen',
+        promptQuestion:
+          'Describe someone who taught you a craft, recipe, or habit with their hands rather than a lecture.',
+        epigraph:
+          'She never owned a kitchen scale; she judged dough by how willingly it answered the heel of her palm.',
+        pullQuote:
+          'When you rush bread, she used to say, all you bake is impatience.',
+        body: `Every Saturday morning from October through April, my grandmother’s kitchen was the warmest room in the county. Long before the rest of the house woke, she would light the pilot on the cast-iron range and set a chipped ceramic bowl beside the south window where the pale winter sun fell across the oak table.
+
+She taught me to knead without ever giving a speech about measurements. Instead, she placed my small hands directly over hers so I could feel the rhythm: fold, press with the heel, quarter-turn, repeat. Flour drifted into the creases of my sleeves and settled on the bridge of my nose, while she hummed old radio waltzes under her breath.
+
+Years later, when I opened my own small neighborhood bakery on Elm Street, I hung her flour-dusted calico apron beside the proofing rack. Even on mornings when thirty orders sat on the counter, pressing my palms into cool dough still brought her voice right back beside me.`,
+        transcript:
+          'Every Saturday morning in winter Grandma’s kitchen was the warmest room around. She never used a scale—she just put my hands on top of hers on the oak table so I’d feel how to fold, press, and turn the dough. Flour got everywhere. She used to say when you rush bread you just bake impatience. Later when I opened my Elm Street bakery I kept her apron by the rack.',
+        audioUrl: null,
+        audioDurationSeconds: 198,
+        writingTone: 'Preserve Spoken Voice',
+        aiEditLevel: 'light',
+        toneStrength: 'slight',
+        providerUsed: 'gemini',
+        isPrivate: false,
+        editingStatus: 'none',
+        editingNote: '',
+        eraLabel: '1976 · Family Table',
+        followUpQuestions: [
+          'What happened the very first time you baked a loaf completely on your own?',
+          'Which customer at your Elm Street bakery reminded you most of her?',
+        ],
+        updatedAt: now,
+      },
+      {
+        id: 'chap-03',
+        order: 3,
+        title: 'The Letter That Waited Six Months',
+        subtitle: 'Choosing a different coast in the autumn of 1983',
+        promptQuestion:
+          'Tell the story of a crossroads moment—a decision that quietly changed the direction of your entire life.',
+        epigraph:
+          'Some doors do not slam shut; they simply stay propped open until you find the courage to step through.',
+        pullQuote:
+          'I kept the postmarked envelope in my coat pocket through three weeks of rain before opening it a second time.',
+        body: `In October of 1983, I had a steady bookkeeping job in Portland, a reliable green Volvo with ninety thousand miles, and a growing suspicion that I was living someone else’s carefully drafted itinerary. On a Tuesday afternoon, a thick cream envelope arrived from a cousin in Monterey asking if I would help restore an old coastal inn’s ledger—and stay through the winter if the ocean suited me.
+
+I told myself I needed a month to weigh the numbers. In truth, I knew the answer the evening I walked past the harbor and watched the fog roll under the bridge cables. Two weeks later I packed two suitcases, a box of family photographs, and my grandmother’s brass kettle into the Volvo and pointed the hood south along Highway 101.
+
+That winter turned into twelve years, a marriage, and the life our children know today. Whenever Maya asks how you recognize a turning point while you are standing inside it, I tell her it rarely announces itself with trumpets—usually it arrives in a cream envelope on an ordinary Tuesday.`,
+        transcript:
+          'October 1983, I was doing bookkeeping in Portland, driving an old green Volvo. Then my cousin in Monterey wrote asking if I’d come down for the winter to help straighten out the books at a coastal inn. I kept the envelope in my coat pocket for weeks, then packed two suitcases, family photos, and Grandma’s kettle and drove south on 101. Stayed twelve years.',
+        audioUrl: null,
+        audioDurationSeconds: 142,
+        writingTone: 'Warm Memoir',
+        aiEditLevel: 'balanced',
+        toneStrength: 'slight',
+        providerUsed: 'gemini',
+        isPrivate: false,
+        editingStatus: 'none',
+        editingNote: '',
+        eraLabel: '1983 · Turning Point',
+        followUpQuestions: [
+          'What was the very first sight you saw when you pulled into Monterey at the end of that drive?',
+          'Who in Portland tried to talk you out of going, and what did you say to them?',
+        ],
+        updatedAt: now,
+      },
+    ],
+    photos: [
+      {
+        id: 'photo-01',
+        chapterId: 'chap-01',
+        imageUrl: '/src/assets/images/sample_childhood_summer_1794804938197.jpg',
+        caption: 'Figure 1.1 — Leo and Clara on the Cedar Cove dock, late August 1974.',
+        storyNarrative:
+          'Captured just before the seven o’clock supper bell, Leo and Clara sit shoulder-to-shoulder on the bleached barn-timber planks as the sunset turns the northern cove to copper.',
+        memoryHint: 'My brother Leo and me sitting on Grandpa’s cedar dock at sunset around 1974.',
+        yearLabel: 'August 1974',
+        locationLabel: 'Cedar Cove, Northern Shore',
+        placement: 'framed-figure',
+        followUpQuestions: [
+          'Who was standing behind the camera taking this picture on the shoreline?',
+        ],
+        createdAt: now,
+      },
+      {
+        id: 'photo-02',
+        chapterId: 'chap-02',
+        imageUrl: '/src/assets/images/sample_bakery_kitchen_1794804938875.jpg',
+        caption: 'Figure 2.1 — Saturday morning sourdough by the south kitchen window.',
+        storyNarrative:
+          'Sunlight filters through the mullioned glass onto a well-worn oak tabletop dusted generously with stone-ground flour.',
+        memoryHint: 'Baking Saturday bread with Grandma in her sunlit kitchen.',
+        yearLabel: 'Spring 1976',
+        locationLabel: 'Elm Hollow Farmhouse',
+        placement: 'chapter-opener',
+        followUpQuestions: [
+          'What song did your grandmother usually hum while the bread rested?',
+        ],
+        createdAt: now,
+      },
+    ],
+    prompts: [
+      {
+        id: 'prompt-04',
+        category: 'Family & Roots',
+        question:
+          'What did your parents or grandparents never say out loud, yet showed every single week through their actions?',
+        memoryTriggers: [
+          'Think about Sunday mornings, paydays, or how guests were welcomed at the door.',
+          'Recall a quiet repair, saved envelope, or gesture of care you noticed only years later.',
+        ],
+        coachingTip:
+          'Focus on one concrete Tuesday or Saturday memory rather than trying to summarize their whole personality.',
+        estimatedMinutes: 4,
+        isCustom: false,
+        createdBy: 'Maya Vance',
+        cadence: 'weekly',
+        status: 'inbox',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: null,
+        createdAt: now,
+      },
+      {
+        id: 'prompt-photo-01',
+        category: 'Childhood & Early Days',
+        question:
+          'Mom, what does this dock photo from 1974 help you remember about that whole summer?',
+        memoryTriggers: [
+          'Who took this photo from the shore while you and Leo sat there?',
+          'What did Leo whisper right before you laughed?',
+          'What was waiting inside on the porch table?',
+        ],
+        coachingTip:
+          'Just talk like you are showing this snapshot to Maya across the kitchen table.',
+        estimatedMinutes: 4,
+        isCustom: true,
+        createdBy: 'Leo Vance',
+        cadence: 'on-demand',
+        status: 'inbox',
+        photoUrl: '/src/assets/images/sample_childhood_summer_1794804938197.jpg',
+        voicePromptUrl: null,
+        answeredChapterId: null,
+        createdAt: now,
+      },
+      {
+        id: 'prompt-05',
+        category: 'Love & Companionship',
+        question:
+          'Tell the story of an ordinary day with someone you love that captures your bond better than any anniversary.',
+        memoryTriggers: [
+          'Think of a long drive, a rainy errand, or fixing dinner when plans fell through.',
+          'Recall a shared joke or small ritual nobody else would understand.',
+        ],
+        coachingTip:
+          'Ordinary days carry the truest dialogue—include the small disagreements or laughter you remember.',
+        estimatedMinutes: 4,
+        isCustom: false,
+        createdBy: 'Maya Vance',
+        cadence: 'weekly',
+        status: 'inbox',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: null,
+        createdAt: now,
+      },
+      {
+        id: 'prompt-06',
+        category: 'Craft, Work & Calling',
+        question:
+          'What was the hardest season of your work life, and who stood beside you while you figured it out?',
+        memoryTriggers: [
+          'Remember the earliest morning you ever woke up for that job or venture.',
+          'Recall the first paycheck, first customer, or first mistake you survived.',
+        ],
+        coachingTip:
+          'Tell the messy middle honestly—readers connect deepest with how resilience felt before the outcome was clear.',
+        estimatedMinutes: 5,
+        isCustom: false,
+        createdBy: 'RememberPress Guide',
+        cadence: 'weekly',
+        status: 'queued',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: null,
+        createdAt: now,
+      },
+      {
+        id: 'prompt-01',
+        category: 'Childhood & Early Days',
+        question:
+          'What is a childhood place whose smells, light, or sounds you can still recall immediately?',
+        memoryTriggers: [
+          'Recall the season and time of day you usually arrived there.',
+          'Name one small object you always carried in your pocket or hand.',
+        ],
+        coachingTip:
+          'Start with one physical sense—the creak of a screen door, cedar heat, or gravel crunching.',
+        estimatedMinutes: 4,
+        isCustom: false,
+        createdBy: 'RememberPress Guide',
+        cadence: 'weekly',
+        status: 'answered',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: 'chap-01',
+        createdAt: now,
+      },
+      {
+        id: 'prompt-02',
+        category: 'Traditions & Table',
+        question:
+          'Describe someone who taught you a craft, recipe, or habit with their hands rather than a lecture.',
+        memoryTriggers: [
+          'Picture the workspace: table surface, tools, apron, or lighting.',
+          'Remember a short phrase they repeated while working.',
+        ],
+        coachingTip:
+          'Do not worry about listing exact ingredients or steps—focus on the rhythm between the two of you.',
+        estimatedMinutes: 5,
+        isCustom: false,
+        createdBy: 'RememberPress Guide',
+        cadence: 'weekly',
+        status: 'answered',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: 'chap-02',
+        createdAt: now,
+      },
+      {
+        id: 'prompt-03',
+        category: 'Turning Points',
+        question:
+          'Tell the story of a crossroads moment—a decision that quietly changed the direction of your entire life.',
+        memoryTriggers: [
+          'Remember what you were doing right before the opportunity or change arrived.',
+          'Recall what you packed or left behind when you said yes.',
+        ],
+        coachingTip:
+          'Speak as if explaining that season to a grandchild who only knows who you became afterward.',
+        estimatedMinutes: 5,
+        isCustom: false,
+        createdBy: 'RememberPress Guide',
+        cadence: 'weekly',
+        status: 'answered',
+        photoUrl: null,
+        voicePromptUrl: null,
+        answeredChapterId: 'chap-03',
+        createdAt: now,
+      },
+    ],
+  };
+}

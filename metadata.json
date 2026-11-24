@@ -1,0 +1,6 @@
+{
+  "name": "Remember Press",
+  "description": "Turn spoken audio interviews, family photographs, and guided memories into edited manuscript chapters and print-ready heirloom books.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
