@@ -192,8 +192,8 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [showOnboarding, setShowOnboarding] = useState(false);
 
-  const [role, setRole] = useState<UserRole>('author');
-  const [memberName, setMemberName] = useState<string>('Clara Vance');
+  const [role, setRole] = useState<UserRole>('organizer');
+  const [memberName, setMemberName] = useState<string>('Maya Vance');
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
 
   const [capturePrompt, setCapturePrompt] = useState<GuidedPrompt | null>(null);
@@ -326,7 +326,7 @@ export default function App() {
 
       const initialRole: UserRole = promptParam
         ? 'author'
-        : explicitRole || savedSession?.role || 'author';
+        : explicitRole || savedSession?.role || 'organizer';
       setRole(initialRole);
 
       try {
@@ -384,7 +384,12 @@ export default function App() {
         setWorkspace(fallback);
         writeLocalWorkspace(fallback);
         refreshBookList(fallback);
-        setMemberName(savedSession?.memberName || fallback.settings.authorName);
+        setMemberName(
+          savedSession?.memberName ||
+            (initialRole === 'organizer'
+              ? fallback.settings.organizerName
+              : fallback.settings.authorName)
+        );
         if (!hasDeepLink && !savedSession?.onboardingComplete) {
           setShowOnboarding(true);
         }
@@ -554,7 +559,29 @@ export default function App() {
     return (
       <OnboardingView
         onWorkspaceReady={handleWorkspaceReady}
-        onCancel={workspace ? () => setShowOnboarding(false) : undefined}
+        onCancel={
+          workspace
+            ? () => {
+                const homeRole: UserRole =
+                  workspace.settings.bookMode === 'self' ? 'author' : 'organizer';
+                const homeMember =
+                  homeRole === 'author'
+                    ? workspace.settings.authorName
+                    : workspace.settings.organizerName || 'Maya Vance';
+                setRole(homeRole);
+                setMemberName(homeMember);
+                setCapturePrompt(null);
+                setActiveTab('home');
+                writeSession({
+                  bookId: workspace.settings.id,
+                  role: homeRole,
+                  memberName: homeMember,
+                  onboardingComplete: true,
+                });
+                setShowOnboarding(false);
+              }
+            : undefined
+        }
       />
     );
   }
